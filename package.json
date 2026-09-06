@@ -9,7 +9,7 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "node OpenHands-main/bin/agent-canvas.mjs --port 8789",
+    "dev": "node bin/agent-canvas.mjs --port 8789",
     "dev:docker": "docker compose -f docker-compose.yml up",
     "lint": "echo 'lint via OpenHands-main'",
     "typecheck": "echo 'typecheck via OpenHands-main'"

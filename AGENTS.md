@@ -4,7 +4,7 @@
 
 Sloth Engineer 🦥 est l'ingénieur autonome de la Demotic Suite. Fork d'OpenHands, il exécute des tâches longues en sandbox Docker isolée: lecture complète d'un repo, plan `PLAN.md`, boucle code → tests → auto-correction jusqu'à PR parfaite. Le développeur reste "paresseux" pendant que le paresseux travaille.
 
-Base: `OpenHands-main/` (OpenHands v1.13.0 MIT, `@openhands/agent-canvas`). Ne pas modifier le vendor sans décision produit — le rebrand est branding + glue uniquement en beta.
+Base: vendor flatten au root (OpenHands v1.13.0 MIT, `@openhands/agent-canvas`, anciennement `OpenHands-main/`). Ne pas modifier le vendor sans décision produit — le rebrand est branding + glue uniquement en beta.
 
 ## Stack
 
@@ -37,7 +37,7 @@ clisis-coder --delegate-to sloth "Fix auth bug"
 
 | Action | Commande |
 |---|---|
-| Dev (canvas) | `cd OpenHands-main && npm run dev` (ou `bin/agent-canvas.mjs --port 8789`) |
+| Dev (canvas) | `npm run dev` (ou `bin/agent-canvas.mjs --port 8789`) |
 | Via launcher | `node ../bridge/launch.mjs --only sloth --project my-app` |
 | Docker | `docker compose -f docker-compose.yml up` |
 | Hand-off depuis Clisis | `clisis-coder --delegate-to sloth "<instruction>"` (écrit `.sloth/tasks/`) |
@@ -55,6 +55,6 @@ Package manager: **npm** (OpenHands). Ne pas introduire pnpm/bun ici.
 
 ## Known constraints
 
-- `OpenHands-main/` est un vendor snapshot — `git submodule` non utilisé volontairement en beta (évite 1.1k fichiers en diff).
+- Vendor flatten au root — `git submodule` non utilisé volontairement en beta (évite diff subfolder).
 - Le port 8789 peut confliter avec Motion 8788 / Owl 8787 — vérifier `bridge/PROTOCOL.md` Port Allocation.
 - `DEMO_MODE` n'existe pas ici — l'auth passe par `demotic-cloud` (DeviceLink + UserApiKey).

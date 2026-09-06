@@ -1,7 +1,7 @@
 services:
   sloth:
     build:
-      context: ./OpenHands-main
+      context: .
       dockerfile: docker/Dockerfile
     ports:
       - "${DEMOTIC_SLOTH_PORT:-8789}:8789"
