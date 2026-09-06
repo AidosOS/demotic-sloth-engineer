@@ -1,0 +1,18 @@
+services:
+  sloth:
+    build:
+      context: ./OpenHands-main
+      dockerfile: docker/Dockerfile
+    ports:
+      - "${DEMOTIC_SLOTH_PORT:-8789}:8789"
+    volumes:
+      - ${SLOTH_WORKSPACE:-~/.demotic/workspaces/default}:/workspace
+      - sloth-cache:/tmp/sloth
+    environment:
+      SLOTH_PORT: ${DEMOTIC_SLOTH_PORT:-8789}
+      SLOTH_WORKSPACE: ${SLOTH_WORKSPACE:-~/.demotic/workspaces/default}
+      WORKSPACE_BASE: /workspace
+    restart: unless-stopped
+
+volumes:
+  sloth-cache:
